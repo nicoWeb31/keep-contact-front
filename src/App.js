@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './component/pages/Home';
 import About from './component/pages/About';
 
+
 import ContactState from './context/contact/ContactState';
 
 const App = () => {

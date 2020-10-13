@@ -1,4 +1,4 @@
-import { Switch } from 'react-router-dom';
+
 import {
     ADD_CONTACT,
     DEELETE_CONTACT,
@@ -17,6 +17,12 @@ export default(state, action)=>{
             return{
                 ...state,
                 contacts : [...state.contacts,action.payload]         ////add 
+            }
+
+        case DEELETE_CONTACT: 
+            return {
+                ...state,
+                contacts: state.contacts.filter(contact=> contact.id !== action.payload) ///delete
             }
 
 

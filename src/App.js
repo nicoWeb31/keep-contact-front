@@ -5,12 +5,13 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Home from './component/pages/Home';
 import About from './component/pages/About';
 import Register from './component/auth/Register';
-import Login from './component/auth/Login'
+import Login from './component/auth/Login';
+import Alert from './component/layout/Alert'
 
 
 import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
-import AlertState from './context/alert/AlertState'
+import AlertState from './context/alert/AlertState';
 
 
 const App = () => {
@@ -18,13 +19,14 @@ const App = () => {
 
     <AuthState>
     <ContactState>
-    <AuthState>
+    <AlertState>
 
         <Router>
 
           <React.Fragment className="App">
             <NavBar />
             <div className="container">
+            <Alert/>
               <Switch>
                 <Route exact path='/' component={Home} />
                 <Route exact path='/about' component={About} />
@@ -38,7 +40,7 @@ const App = () => {
 
         </Router>
 
-    </AuthState>
+    </AlertState>
     </ContactState>
     </AuthState>
   );

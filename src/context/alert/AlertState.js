@@ -34,7 +34,7 @@ const AuthState = props => {
 
         <alertContext.Provider
             value={{
-                alert: state,
+                alerts: state,
                 setAlert
             }}
         >

@@ -12,7 +12,12 @@ import Alert from './component/layout/Alert'
 import ContactState from './context/contact/ContactState';
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
+import  setAuthToken from './utils/setAuthToken'
 
+//test token 
+if(localStorage.token){
+  setAuthToken(localStorage.token)
+}
 
 const App = () => {
   return (
@@ -23,7 +28,7 @@ const App = () => {
 
         <Router>
 
-          <React.Fragment className="App">
+          <React.Fragment>
             <NavBar />
             <div className="container">
             <Alert/>

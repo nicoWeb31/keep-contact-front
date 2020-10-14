@@ -70,21 +70,42 @@ const AuthState = props =>{
         }catch(err){
             dispatch({
                 type:REGISTER_FAIL,
-                payload: err.response.data.message
+                payload: err
             })
         }
     }
 
     //Login
-    const login = ()=>{
-        console.log('login ......')
+    const login = async(data)=>{
+        const config ={
+            headers:{
+                'Content-Type': 'application/json'
+                // 'Access-Control-Allow-Origin': '*'
+            }
+        }
+        try{
+            const res = await axios.post('http://localhost:5000/api/auth',data,config)
+
+            dispatch({
+                type:LOGIN_SUCCESS,
+                payload: res.data
+            });
+
+            //load user
+            loadUser()
+
+        }catch(err){
+            dispatch({
+                type:LOGIN_FAIL,
+                payload: err.message
+            })
+        }
     }
 
     //Logout
     const logOut = ()=>{
-        console.log('logout ......')
+        dispatch({type:LOGOUT})   
     }
-
     //Clear Errors
     const clearErrors = ()=>{
         dispatch({

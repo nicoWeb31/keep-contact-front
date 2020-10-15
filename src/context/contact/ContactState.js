@@ -104,8 +104,24 @@ const ContactState = props =>{
 
     //update contact
 
-    const UpdateContact = contact =>{
-        dispatch({type : UPDATE_CONTACT,payload:contact})
+    const UpdateContact = async contact =>{
+
+        const config = {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        }
+
+        try {
+
+            const response = await axios.put(`http://localhost:5000/api/contacts/${contact._id}`,contact,config);
+            dispatch({type : UPDATE_CONTACT, payload:response.data})
+
+        } catch (error) {
+            dispatch({type: CONTACT_ERR, payload: error.response.message})
+        }
+
+
 
     }
 

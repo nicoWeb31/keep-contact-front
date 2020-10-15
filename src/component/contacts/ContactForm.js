@@ -52,6 +52,7 @@ const ContactForm = () => {
         clearAll();
         
         setContact({
+
             name: '',
             email: '',
             phone: '',
@@ -66,6 +67,7 @@ const ContactForm = () => {
     return (
         <form onSubmit={onformSubmit}>
             <h2 className="text-primary">{current ? 'Edit conatct ' : 'Add contact'}</h2>
+            
             <input type="text"
                 name="name"
                 placeholder='name'

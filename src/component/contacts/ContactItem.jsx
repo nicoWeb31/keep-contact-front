@@ -9,12 +9,12 @@ const ContactItem = ({contact}) => {
     const contactContext = useContext(ContactContext)
 
 
-    const {id, name,email,phone, type} = contact;
+    const {_id, name,email,phone, type} = contact;
 
     const onDeleteClick =()=>{
-        //clear le current contact before delete !
+        
+        contactContext.deleteContact(_id)
         contactContext.clearCurrentContact()
-        contactContext.deleteContact(id)
     }
 
     return (

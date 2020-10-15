@@ -2,17 +2,23 @@ import React,{useContext} from 'react';
 import PropTypes from 'prop-types';
 import {Link} from 'react-router-dom';
 import toto from '../../context/auth/authContext'
+import tota from '../../context/contact/ContactContext'
 
 
-const NavBar = ({title, icon}) => {
+
+const NavBar = ({title,icon}) => {
 
 
     const authContext = useContext(toto)
+    const contactContext = useContext(tota)
+
     const {isAuthenticated,logOut,user} = authContext
 
 
     const onLogout =()=>{
         logOut();
+        contactContext.clearContact();
+        
     }
 
     const authLinks = (

@@ -15,11 +15,15 @@ export default (state, action) => {
     switch (action.type) {
 
         case LOGOUT :
+            localStorage.removeItem('token');
             return{
                 ...state,
                 token: null,
                 isAuthenticated: false,
-                user: null
+                user: null,
+                error:null,
+                loading: false,
+
                 
             }
 

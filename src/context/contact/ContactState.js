@@ -14,12 +14,13 @@ import {
     FILTER_CONTACT,
     CLEAR_FILTER,
     CONTACT_ERR,
-    GET_CONTACT
+    GET_CONTACT,
+    CLEAR_CONTACT
 } from '../types'
 
 const ContactState = props =>{
     const initialState = {
-        contacts:[],
+        contacts:null,
         current: null,
         filtered: null,
         error: null
@@ -36,7 +37,7 @@ const ContactState = props =>{
         try {
 
             const response = await axios.get('http://localhost:5000/api/contacts');
-            dispatch({type : GET_CONTACT, payload:response.data})
+            dispatch({type:GET_CONTACT, payload:response.data})
 
         } catch (error) {
             dispatch({type: CONTACT_ERR, payload: error.response.message})
@@ -67,9 +68,26 @@ const ContactState = props =>{
     }
 
     //delete contact
-    const deleteContact = id =>{
-        dispatch({type : DEELETE_CONTACT, payload:id})
+    const deleteContact = async id =>{
 
+        try {
+
+            await axios.delete(`http://localhost:5000/api/contacts/${id}`);
+            dispatch({type : DEELETE_CONTACT, payload:id})
+        
+
+        } catch (error) {
+            dispatch({type: CONTACT_ERR, payload: error.response.message})
+        }
+
+
+
+    }
+
+    //clear Contact
+
+    const clearContact = ()=>{
+        dispatch({type:CLEAR_CONTACT})
     }
 
     //set Current contact
@@ -117,7 +135,8 @@ const ContactState = props =>{
             UpdateContact,
             filteredContact,
             clearFilteredContact,
-            getContact
+            getContact,
+            clearContact
         }}
         >
             {props.children}

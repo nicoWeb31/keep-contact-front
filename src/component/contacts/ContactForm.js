@@ -41,6 +41,7 @@ const ContactForm = () => {
 
     const onformSubmit =e=>{
         e.preventDefault();
+        
 
         if(!current){
             addContact(contact)

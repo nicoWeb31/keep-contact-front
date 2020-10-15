@@ -86,7 +86,7 @@ export default (state, action) => {
                 token: null,
                 isAuthenticated: false,
                 user: null,
-                error: action.payload
+                //error: action.payload
             }    
 
         default:
